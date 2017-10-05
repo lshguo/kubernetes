@@ -84,3 +84,5 @@ That said, if you have questions, reach out to us
 [troubleshooting guide]: http://kubernetes.io/docs/troubleshooting
 
 [![Analytics](https://kubernetes-site.appspot.com/UA-36037335-10/GitHub/README.md?pixel)]()
+
+我将在此版本基础上调试kube
