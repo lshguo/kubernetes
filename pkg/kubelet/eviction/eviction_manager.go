@@ -194,7 +194,7 @@ func (m *managerImpl) synchronize(diskInfoProvider DiskInfoProvider, podFunc Act
 		return
 	}
 
-	glog.V(3).Infof("eviction manager: synchronize housekeeping")
+	glog.V(6).Infof("eviction manager: synchronize housekeeping")
 
 	// build the ranking functions (if not yet known)
 	// TODO: have a function in cadvisor that lets us know if global housekeeping has completed
@@ -289,7 +289,7 @@ func (m *managerImpl) synchronize(diskInfoProvider DiskInfoProvider, podFunc Act
 	// determine the set of resources under starvation
 	starvedResources := getStarvedResources(thresholds)
 	if len(starvedResources) == 0 {
-		glog.V(3).Infof("eviction manager: no resources are starved")
+		glog.V(6).Infof("eviction manager: no resources are starved")
 		return
 	}
 

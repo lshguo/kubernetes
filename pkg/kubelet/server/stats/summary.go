@@ -386,7 +386,7 @@ func (sb *summaryBuilder) containerInfoV2ToNetworkStats(name string, info *cadvi
 			}
 		}
 	}
-	glog.V(4).Infof("Missing default interface %q for %s", network.DefaultInterfaceName, name)
+	glog.V(6).Infof("Missing default interface %q for %s", network.DefaultInterfaceName, name)
 	return nil
 }
 

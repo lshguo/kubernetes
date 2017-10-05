@@ -1879,9 +1879,9 @@ func (kl *Kubelet) syncLoopIteration(configCh <-chan kubetypes.PodUpdate, handle
 		if !kl.sourcesReady.AllReady() {
 			// If the sources aren't ready or volume manager has not yet synced the states,
 			// skip housekeeping, as we may accidentally delete pods from unready sources.
-			glog.V(4).Infof("SyncLoop (housekeeping, skipped): sources aren't ready yet.")
+			glog.V(6).Infof("SyncLoop (housekeeping, skipped): sources aren't ready yet.")
 		} else {
-			glog.V(4).Infof("SyncLoop (housekeeping)")
+			glog.V(6).Infof("SyncLoop (housekeeping)")
 			if err := handler.HandlePodCleanups(); err != nil {
 				glog.Errorf("Failed cleaning pods: %v", err)
 			}
@@ -2061,7 +2061,7 @@ func (kl *Kubelet) updateRuntimeUp() {
 		// Periodically log the whole runtime status for debugging.
 		// TODO(random-liu): Consider to send node event when optional
 		// condition is unmet.
-		glog.V(4).Infof("Container runtime status: %v", s)
+		glog.V(6).Infof("Container runtime status: %v", s)
 		networkReady := s.GetRuntimeCondition(kubecontainer.NetworkReady)
 		if networkReady == nil || !networkReady.Status {
 			glog.Errorf("Container runtime network not ready: %v", networkReady)
