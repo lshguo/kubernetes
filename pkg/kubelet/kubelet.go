@@ -17,6 +17,7 @@ limitations under the License.
 package kubelet
 
 import (
+	"encoding/json"
 	"fmt"
 	"net"
 	"net/http"
@@ -283,6 +284,10 @@ func getRuntimeAndImageServices(config *componentconfig.KubeletConfiguration) (i
 // NewMainKubelet instantiates a new Kubelet object along with all the required internal modules.
 // No initialization of Kubelet and its modules should happen here.
 func NewMainKubelet(kubeCfg *componentconfig.KubeletConfiguration, kubeDeps *KubeletDeps, standaloneMode bool) (*Kubelet, error) {
+	b, _ := json.MarshalIndent(kubeCfg, "", "    ")
+	glog.V(5).Infoln("guoDebug")
+	glog.V(5).Infoln(string(b))
+
 	if kubeCfg.RootDirectory == "" {
 		return nil, fmt.Errorf("invalid root directory %q", kubeCfg.RootDirectory)
 	}
