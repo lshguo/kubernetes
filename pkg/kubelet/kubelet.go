@@ -285,7 +285,11 @@ func getRuntimeAndImageServices(config *componentconfig.KubeletConfiguration) (i
 // No initialization of Kubelet and its modules should happen here.
 func NewMainKubelet(kubeCfg *componentconfig.KubeletConfiguration, kubeDeps *KubeletDeps, standaloneMode bool) (*Kubelet, error) {
 	b, _ := json.MarshalIndent(kubeCfg, "", "    ")
-	glog.V(5).Infoln("guoDebug")
+	glog.V(5).Infoln("guoDebug, kubeCfg:")
+	glog.V(5).Infoln(string(b))
+
+	b, _ = json.MarshalIndent(kubeDeps, "", "    ")
+	glog.V(5).Infoln("guoDebug, kubeDeps:")
 	glog.V(5).Infoln(string(b))
 
 	if kubeCfg.RootDirectory == "" {
